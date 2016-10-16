@@ -9,6 +9,7 @@ public class MazeRenderer {
     private SpriteBatch batch;
     private Texture wallImage;
     private Texture dotImage;
+    
  
     public MazeRenderer(SpriteBatch batch, Maze maze) {
         this.maze = maze;
@@ -18,11 +19,12 @@ public class MazeRenderer {
     }
  
     public void render() {
+    	
     	batch.begin();
         for(int r = 0; r < maze.getHeight(); r++) {
             for(int c = 0; c < maze.getWidth(); c++) {
-                int x = c * 40;
-                int y = 600 - (r * 40) - 40;
+            	int x = c * WorldRenderer.BLOCK_SIZE;
+                int y = BubbleGame.HEIGHT - (r * WorldRenderer.BLOCK_SIZE) - WorldRenderer.BLOCK_SIZE;
  
                 if(maze.hasWallAt(r, c)) {
                     batch.draw(wallImage, x, y);

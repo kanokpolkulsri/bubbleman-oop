@@ -7,7 +7,7 @@ public class World {
  
     World(BubbleGame bubbleGame) {
         this.bubbleGame = bubbleGame;
-        bubble = new Bubble(100,100);
+        bubble = new Bubble(60,60);
         maze = new Maze();
     }
  

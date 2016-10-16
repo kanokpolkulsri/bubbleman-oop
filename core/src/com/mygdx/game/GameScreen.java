@@ -30,25 +30,80 @@ public class GameScreen extends ScreenAdapter {
     	Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         worldRenderer.render(delta);
-    	/*SpriteBatch batch = bubbleGame.batch;
-        batch.begin();
-        Vector2 pos = bubble.getPosition();
-        batch.draw(bubbleImg, pos.x, pos.y);
-        batch.end();*/
     }
-    
+    private float x=0;
+    private float y=0;
     private void update(float delta) {
-    	if(Gdx.input.isKeyPressed(Keys.UP)) {
-            bubble.move(Bubble.DIRECTION_UP);
+    	x = bubble.getPosition().x;
+		y = bubble.getPosition().y;
+    	if(Gdx.input.isKeyJustPressed(Keys.UP) | Gdx.input.isKeyPressed(Keys.RIGHT) | Gdx.input.isKeyPressed(Keys.LEFT))
+    	{if(Gdx.input.isKeyJustPressed(Keys.UP)) {
+    		if(y>150)
+    			bubble.move(Bubble.DIRECTION_UP);
     	}
     	if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
-            bubble.move(Bubble.DIRECTION_RIGHT);
+    		if(x<750)
+    			bubble.move(Bubble.DIRECTION_RIGHT);
+    		if( (y>40 && y<120) && (x>140 && x<640)  ){
+    			bubble.move(Bubble.DIRECTION_DOWNN);
+    		}
+    		else if( ((y>40 && y<200) && ((x>40 && x<140) || (x>640 && x<760)))  ){
+    			bubble.move(Bubble.DIRECTION_DOWNN);
+    		}
+    		else if( (y>130 && y<280) && (x>190 && x<580)  ){
+    			bubble.move(Bubble.DIRECTION_DOWNN);
+    		}
+    		else if( (y>210 && y<480) && ((x>40 && x<220) || (x>540 && x<760))  ){
+    			bubble.move(Bubble.DIRECTION_DOWNN);
+    		}
+    		else if( (y>310 && y<380) && (x>190 && x<580)  ){
+    			bubble.move(Bubble.DIRECTION_DOWNN);
+    		}
+    		else if( (y>385 && y<550) && (x>190 && x<580)  ){
+    			bubble.move(Bubble.DIRECTION_DOWNN);
+    		}
     	}
     	if(Gdx.input.isKeyPressed(Keys.LEFT)) {
+    		if(x>50)
             bubble.move(Bubble.DIRECTION_LEFT);
-    	}
-    	if(Gdx.input.isKeyPressed(Keys.DOWN)) {
-            bubble.move(Bubble.DIRECTION_DOWN);
+    		if( (y>40 && y<120) && (x>140 && x<640)  ){
+    			bubble.move(Bubble.DIRECTION_DOWNN);
+    		}
+    		else if( ((y>40 && y<200) && ((x>40 && x<140) || (x>640 && x<760)))  ){
+    			bubble.move(Bubble.DIRECTION_DOWNN);
+    		}
+    		else if( (y>130 && y<280) && (x>190 && x<580)  ){
+    			bubble.move(Bubble.DIRECTION_DOWNN);
+    		}
+    		else if( (y>210 && y<480) && ((x>40 && x<220) || (x>540 && x<760))  ){
+    			bubble.move(Bubble.DIRECTION_DOWNN);
+    		}
+    		else if( (y>310 && y<380) && (x>190 && x<580)  ){
+    			bubble.move(Bubble.DIRECTION_DOWNN);
+    		}
+    		else if( (y>385 && y<550) && (x>190 && x<580)  ){
+    			bubble.move(Bubble.DIRECTION_DOWNN);
+    		}
+    	}}
+    	else {
+    		if( (y>40 && y<120) && (x>140 && x<640)  ){
+    			bubble.move(Bubble.DIRECTION_DOWN);
+    		}
+    		else if( ((y>40 && y<200) && ((x>40 && x<140) || (x>640 && x<760)))  ){
+    			bubble.move(Bubble.DIRECTION_DOWN);
+    		}
+    		else if( (y>130 && y<280) && (x>190 && x<580)  ){
+    			bubble.move(Bubble.DIRECTION_DOWN);
+    		}
+    		else if( (y>210 && y<480) && ((x>40 && x<220) || (x>540 && x<760))  ){
+    			bubble.move(Bubble.DIRECTION_DOWN);
+    		}
+    		else if( (y>310 && y<380) && (x>190 && x<580)  ){
+    			bubble.move(Bubble.DIRECTION_DOWN);
+    		}
+    		else if( (y>385 && y<550) && (x>190 && x<580)  ){
+    			bubble.move(Bubble.DIRECTION_DOWN);
+    		}	
     	}
     }
     

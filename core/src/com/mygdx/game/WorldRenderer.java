@@ -13,6 +13,7 @@ public class WorldRenderer {
 	private Bubble bubble;
 	private MazeRenderer mazeRenderer;
 	private Texture bg;
+	public static final int BLOCK_SIZE = 40;
 	
 	public WorldRenderer(BubbleGame bubbleGame, World world) {
         this.bubbleGame = bubbleGame;
@@ -29,9 +30,11 @@ public class WorldRenderer {
 		batch.draw(bg,0,0);
 		batch.end();
 		mazeRenderer.render();
-		batch.begin();
-        Vector2 pos = bubble.getPosition();
-        batch.draw(bubbleImg, pos.x, pos.y);
+		SpriteBatch batch = bubbleGame.batch;
+        Vector2 pos = world.getBubble().getPosition();
+        batch.begin();
+        //batch.draw(bubbleImg, pos.x - 20, BubbleGame.HEIGHT - pos.y - 20);
+        batch.draw(bubbleImg, pos.x - BLOCK_SIZE/2, 600 - pos.y - BLOCK_SIZE/2);
         batch.end();
     }
 }
