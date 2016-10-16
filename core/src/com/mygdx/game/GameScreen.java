@@ -13,6 +13,7 @@ public class GameScreen extends ScreenAdapter {
 	private Texture bubbleImg;
 	private Bubble bubble;
 	World world;
+	private WorldRenderer worldRenderer;
 	 
     public GameScreen(BubbleGame bubbleGame) {
         this.bubbleGame = bubbleGame;
@@ -20,6 +21,7 @@ public class GameScreen extends ScreenAdapter {
         //bubble = new Bubble(100,100);
         world = new World(bubbleGame);
         bubble = world.getBubble();
+        worldRenderer = new WorldRenderer(bubbleGame, world);
     }
     
     @Override
@@ -27,11 +29,12 @@ public class GameScreen extends ScreenAdapter {
     	update(delta);
     	Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-    	SpriteBatch batch = bubbleGame.batch;
+        worldRenderer.render(delta);
+    	/*SpriteBatch batch = bubbleGame.batch;
         batch.begin();
         Vector2 pos = bubble.getPosition();
         batch.draw(bubbleImg, pos.x, pos.y);
-        batch.end();
+        batch.end();*/
     }
     
     private void update(float delta) {
