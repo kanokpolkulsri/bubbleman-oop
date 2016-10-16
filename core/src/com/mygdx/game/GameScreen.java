@@ -1,12 +1,17 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class GameScreen extends ScreenAdapter {
 	private BubbleGame bubbleGame;
 	private Texture bubbleImg;
+	private int x=100;
+	private int y=100;
 	 
     public GameScreen(BubbleGame bubbleGame) {
         this.bubbleGame = bubbleGame;
@@ -15,9 +20,27 @@ public class GameScreen extends ScreenAdapter {
     
     @Override
     public void render(float delta) {
+    	update(delta);
+    	Gdx.gl.glClearColor(0, 0, 0, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
     	SpriteBatch batch = bubbleGame.batch;
         batch.begin();
-        batch.draw(bubbleImg, 100, 100);
+        batch.draw(bubbleImg, x, y);
         batch.end();
+    }
+    
+    private void update(float delta) {
+        if(Gdx.input.isKeyPressed(Keys.LEFT)) {
+            x -= 10;
+        }
+        if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
+            x += 10;
+        }
+        if(Gdx.input.isKeyPressed(Keys.DOWN)) {
+            y -= 10;
+        }
+        if(Gdx.input.isKeyPressed(Keys.UP)) {
+            y += 10;
+        }
     }
 }
